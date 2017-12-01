@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Http\Requests\PostsCreateRequest;
 use App\Post;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminPostsController extends Controller
 {
@@ -38,9 +41,15 @@ class AdminPostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostsCreateRequest $request)
     {
         //
+		$input = $request->all();
+		$user = Auth::user();
+		if($file = $request->file('photo_id')){
+			return "it works";
+		}
+		//return $request->all();
     }
 
     /**
